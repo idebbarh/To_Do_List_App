@@ -1,0 +1,343 @@
+:root{
+    --main-color:#dc4c3e;
+    --main-checked-color:#1eb760;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+li{
+    list-style: none;
+}
+.container{
+    padding:  0 40px;
+}
+@media (max-width:550px) {
+    .container{
+        padding:  0 10px;
+    }
+}
+
+header{
+    background-color: var(--main-color);
+    padding: 20px 0;
+}
+header .header-title-holder{
+    position: relative;
+    width: fit-content;
+}
+header .header-title-holder::before{
+    content: "\f304";
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    font-size: 20px;
+    position: absolute;
+    right: calc(100% + 2px);
+    bottom:calc(100% - 10px);
+    display: none;
+    transform: rotate(263deg);
+}
+header .header-title-holder:hover::before{
+    display: block;
+}
+header #header-title{
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    font-size: 30px;
+    font-weight: bold;
+    overflow: visible;
+    background: none;
+    color: white;
+}
+@media (max-width:750px) {
+    header #header-title{
+        max-width: 100%;
+    }
+}
+.contents .todos-input-holder{
+    display: flex;
+    align-items: center;
+}
+@media (max-width:750px) {
+    .contents .todos-input-holder{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.contents .todos-input-holder button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(138, 134, 134);;
+    padding: 0 15px;
+    position: relative;
+    padding: 15px 0;
+}
+@media (max-width:750px) {
+    .contents .todos-input-holder button{
+        left: 20px;
+    }
+}
+.contents .todos-input-holder button:hover{
+    color: var(--main-color);
+}
+.contents .todos-input-holder button::before{
+    content: "\2b";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -30px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.contents .todos-input-holder button:hover::before{
+    color: white;
+    background-color: var(--main-color);
+}
+.contents #todos-input{
+    font-size: 40px;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 15px 0;
+    flex: 1;
+}
+@media (max-width:750px) {
+    .contents #todos-input{
+        font-size: 30px;
+    }
+}
+.contents #all-todos-list .task{
+    padding: 15px 20px;
+    border-top: 1px solid #eef0f5;
+    border-bottom: 1px solid #eef0f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    cursor: pointer;
+}
+@media (max-width:750px) {
+    .contents #all-todos-list .task{
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+.contents #all-todos-list .task .left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.contents #all-todos-list .task:hover{
+    border-color: #cfcfcf;
+}
+.contents #all-todos-list .task .checkbox{
+    width: 30px;
+    height: 30px;
+    accent-color: var(--main-checked-color);
+    position: relative;
+    background-color: white;
+    cursor: pointer;
+}
+.contents #all-todos-list .task .checkbox::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: inherit;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+.contents #all-todos-list .task .checkbox::after{
+    content: "\f00c";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-checked-color);
+    color: white;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.contents #all-todos-list .task .checkbox:hover::before,
+.contents #all-todos-list .task .checkbox:hover::after{
+    display: flex;
+    opacity: 1;
+}
+.contents #all-todos-list .task .task-title{
+    font-size: 22px;
+    font-weight: 600;
+}
+.contents #all-todos-list .task .task-date{
+    border: none;
+    padding: 3px;
+    background-color: #cfcfcf;
+    border-radius: 10px;
+    display: none;
+}
+.contents #all-todos-list .task .before-set-date{
+    background-color: rgb(138, 134, 134);
+    color: white;
+    font-size: 12px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+    font-weight: bold;
+}
+.contents #all-todos-list .task .before-set-date:hover{
+    opacity: 1;
+}
+.contents #all-todos-list .task .right{
+    display: flex;
+    gap: 30px;
+}
+.contents #all-todos-list .task .right > *{
+    position: relative;
+    font-size: 25px;
+    color: #ccc;
+    cursor: pointer;
+    opacity: 0;
+}
+.contents #all-todos-list .task .right .star-task:hover{
+    color: orange;
+}
+.contents #all-todos-list .task .right .task-color-changer:hover{
+    color: rgb(102, 0, 117);
+}
+.contents #all-todos-list .task .right .delete-task{
+    font-size: 28px;
+}
+.contents #all-todos-list .task .right .delete-task:hover{
+    color: red;
+}
+.contents #all-todos-list .task:hover .right > *{
+    opacity: 1;
+}
+.contents #all-todos-list .task .right i::after{
+    position: absolute;
+    right: 0;
+    font-family: 'Roboto', sans-serif;
+    top: calc(100% + 5px);
+    width: fit-content;
+    height: 30px;
+    background-color: rgb(38, 37, 37);
+    color: white;
+    font-size: 14px;
+    width: 150px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.contents #all-todos-list .task .right i:hover::after{
+    display: flex;
+}
+.contents #all-todos-list .task .right .star-task::after{
+    content: "Star task";
+}
+.contents #all-todos-list .task .right .task-color-changer::after{
+    content: "Tag task with color";
+}
+.contents #all-todos-list .task .right .delete-task::after{
+    content: "Delete task";
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu{
+    position: absolute;
+    top: 50%;
+    right: calc(100% + 15px);
+    transform: translateY(-50%);
+    padding: 10px 15px;
+    background-color: white;
+    align-items: center;
+    gap: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: none;
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li{
+    width: 23px;
+    height: 23px;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li:not(:first-child){
+    border-radius: 50%;
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li:hover{
+    opacity: 1;
+    transform: scale(105%);
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li.normal{
+    background-color: white;
+    border: 1px solid var(--main-checked-color);
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li.red{
+    background-color: #dc4c3e;
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li.blue{
+    background-color: #29a9eb;
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li.green{
+    background-color: var(--main-checked-color);
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li.purple{
+    background-color: #843ab8;
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li.orange{
+    background-color: #ff9600;
+}
+.contents #all-todos-list .task .right .task-color-changer-holder .colors-menu li.checked{
+    border-radius: 0;
+}
+.contents #all-todos-list .task .right .star-active{
+    color: orange;
+    opacity: 1;
+}
+.contents .info{
+    color: rgb(138, 134, 134);;
+    padding: 30px 0;
+    font-size: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-top: 30px;
+}
+.contents .info a{
+    font-weight: bold;
+    transition: 0.3s;
+}
+.contents .info a:hover{
+    color: #000;
+}
+@media (max-width:750px) {
+    .contents .info{
+        margin: 0 auto;
+        text-align: center;
+    }
+}
